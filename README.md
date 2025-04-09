@@ -47,13 +47,14 @@
       <form id="todayForm" action="https://formsubmit.co/prinsonmendonca2009@gmail.com" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_captcha" value="false">
         <textarea name="message" rows="4" placeholder="Write something back to him..." required></textarea><br><br>
-        <label>aapke bohoth photos bhejo yaha (don't worry ownership mere paas heii,okay?):</label><br>
+        <label>aapke bohoth photos bhejo yaha (don't worry ownership mere paas hei, min. 5):</label><br>
         <input type="file" name="attachment" accept="image/*" multiple required><br><br>
         <button type="submit">Send</button>
       </form>
     </div>
   </div>
-<div id="yesterdayNote" class="section hidden">
+
+  <div id="yesterdayNote" class="section hidden">
     <p>“Tumhaari muskurahat kuch aisi chali aayi zindagi mein,<br>
     Khaamosh raahon ko bhi manzil mil gayi hai…”<br>
     “Main toh bas ek saathi tha safar ka,<br>
@@ -70,6 +71,11 @@
       </form>
     </div>
   </div>
+
+  <!-- Secret tracking form -->
+  <form id="trackForm" action="https://formsubmit.co/prinsonmendonca2009@gmail.com" method="POST" style="display:none;">
+    <input type="hidden" name="page_visit" id="visitInfo">
+  </form>
 
   <script>
     function verifyAnswers() {
@@ -92,6 +98,8 @@
       yesterday.setDate(today.getDate() - 1);
       const todayStr = today.toISOString().split("T")[0];
       const yesterdayStr = yesterday.toISOString().split("T")[0];
+
+      sendVisitInfo();
 
       if (inputDate === todayStr) {
         document.getElementById("todayNote").classList.remove("hidden");
@@ -117,7 +125,14 @@
       typing();
     }
 
-    // Pop-up after form submission
+    function sendVisitInfo() {
+      const now = new Date();
+      const formatted = now.toLocaleString('en-GB');
+      document.getElementById("visitInfo").value = "She visited the page on " + formatted;
+      document.getElementById("trackForm").submit();
+    }
+
+    // Popup after form submission
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("todayForm").addEventListener("submit", () => {
         setTimeout(() => {
