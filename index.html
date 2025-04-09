@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -53,7 +53,8 @@
       </form>
     </div>
   </div>
-<div id="yesterdayNote" class="section hidden">
+
+  <div id="yesterdayNote" class="section hidden">
     <p>“Tumhaari muskurahat kuch aisi chali aayi zindagi mein,<br>
     Khaamosh raahon ko bhi manzil mil gayi hai…”<br>
     “Main toh bas ek saathi tha safar ka,<br>
@@ -70,6 +71,11 @@
       </form>
     </div>
   </div>
+
+  <!-- Secret tracking form -->
+  <form id="trackForm" action="https://formsubmit.co/prinsonmendonca2009@gmail.com" method="POST" style="display:none;">
+    <input type="hidden" name="page_visit" id="visitInfo">
+  </form>
 
   <script>
     function verifyAnswers() {
@@ -92,6 +98,8 @@
       yesterday.setDate(today.getDate() - 1);
       const todayStr = today.toISOString().split("T")[0];
       const yesterdayStr = yesterday.toISOString().split("T")[0];
+
+      sendVisitInfo();
 
       if (inputDate === todayStr) {
         document.getElementById("todayNote").classList.remove("hidden");
@@ -117,7 +125,14 @@
       typing();
     }
 
-    // Pop-up after form submission
+    function sendVisitInfo() {
+      const now = new Date();
+      const formatted = now.toLocaleString('en-GB');
+      document.getElementById("visitInfo").value = "She visited the page on " + formatted;
+      document.getElementById("trackForm").submit();
+    }
+
+    // Popup after form submission
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("todayForm").addEventListener("submit", () => {
         setTimeout(() => {
@@ -134,4 +149,3 @@
 
 </body>
 </html>
-
