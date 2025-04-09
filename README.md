@@ -30,6 +30,8 @@
     <input type="text" id="birthday"><br><br>
     <label>Who's your favourite person?</label><br>
     <input type="text" id="favPerson"><br><br>
+    <label>Your Gmail:</label><br>
+    <input type="email" id="gmail"><br><br>
     <button onclick="verifyAnswers()">Next</button>
   </div>
 
@@ -43,9 +45,13 @@
     <p>Kisi ne kaha tha "bhaii!, woh aapko close friends account mei hei, meh nhi hu na? Tabh mehne sabh ku nikaalke sirf aap hi ko rakha tha! Abhi aap hi nikali so😭 jaao na aap!!"</p>
     <p>Kal aapke reply mei kuch missing attha, zara yaad kero!!</p>
     <p>aur aap manje snap aur WhatsApp mei bhi nhi daale so! Atleast unblock kerke add friend kerke toh rakho na!!😭</p>
+    <p>bhaii mera cousin hei na Christan uska cousin aya hei mumbai se aur meh use scooty sikha rha hu!💀 Woh jaathe kuch dino mei!!</p>
+    <p>meh 22 ku mumbai jaau?</p>
+    <p>eid ke photos aur kuch photos neeche upload kero bhai pleasee naa!</p>
     <div class="comment-section">
       <form id="todayForm" action="https://formsubmit.co/prinsonmendonca2009@gmail.com" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://prinruf-1810.github.io/It-s-only-to-you-/">
         <textarea name="message" rows="4" placeholder="Write something back to him..." required></textarea><br><br>
         <label>aapke bohoth photos bhejo yaha (don't worry ownership mere paas hei, min. 5):</label><br>
         <input type="file" name="attachment" accept="image/*" multiple required><br><br>
@@ -63,6 +69,7 @@
     <div class="comment-section">
       <form id="yesterdayForm" action="https://formsubmit.co/prinsonmendonca2009@gmail.com" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://prinruf-1810.github.io/It-s-only-to-you-/">
         <input type="hidden" name="Favourite Person" id="favHidden">
         <textarea name="message" rows="4" placeholder="Write something back to him..." required></textarea><br><br>
         <label>aapke bohoth photos bhejo yaha (don't worry ownership mere paas hei, min. 5):</label><br>
@@ -82,7 +89,8 @@
       const name = document.getElementById("name").value.trim();
       const bday = document.getElementById("birthday").value.trim();
       const fav = document.getElementById("favPerson").value.trim();
-      if (!name || !bday || !fav) {
+      const gmail = document.getElementById("gmail").value.trim();
+      if (!name || !bday || !fav || !gmail) {
         alert("Please fill in all fields.");
         return;
       }
@@ -132,7 +140,6 @@
       document.getElementById("trackForm").submit();
     }
 
-    // Popup after form submission
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("todayForm").addEventListener("submit", () => {
         setTimeout(() => {
